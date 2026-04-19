@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Lab - Real-time Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-screen flex flex-col bg-slate-50 overflow-hidden font-sans">
+
+    <section class="h-[45vh] min-h-[400px] border-b border-slate-200 bg-white shadow-sm z-50 flex flex-col p-8">
+        <header class="flex justify-between items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-black text-slate-900 tracking-tight">
+                    Flexbox <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600">Lab</span>
+                </h1>
+                <p class="text-slate-400 text-sm">Real-time Layout Simulator</p>
+            </div>
+
+            <div class="bg-slate-900 rounded-xl p-4 text-xs font-mono text-slate-300 shadow-lg flex gap-6 items-center">
+                <div><span class="text-pink-400">dir:</span> <span id="css-direction">row</span></div>
+                <div><span class="text-pink-400">just:</span> <span id="css-justify">flex-start</span></div>
+                <div><span class="text-pink-400">aln:</span> <span id="css-align">center</span></div>
+                <div><span class="text-pink-400">wrp:</span> <span id="css-wrap">nowrap</span></div>
+            </div>
+        </header>
+
+        <div class="flex-1 flex items-center justify-center border-2 border-dashed border-indigo-200 rounded-3xl bg-slate-50/30">
+            <div id="container" class="flex-container flex gap-4 p-4 transition-all duration-500" style="display: flex; align-items: center;">
+                <div class="flex-item item-1">1</div>
+                <div class="flex-item item-2 h-20">2</div>
+                <div class="flex-item item-3 text-4xl">3</div>
+                <div class="flex-item item-4 text-sm w-12 h-12">4</div>
+                <div class="flex-item item-1">5</div>
+                <div class="flex-item item-2">6</div>
+                <div class="flex-item item-3">7</div>
+                <div class="flex-item item-4">8</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="flex-1 overflow-y-auto p-8 bg-slate-100/50">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="control-group">
+                <div class="group-title text-indigo-600"><span>&rarr;</span> Flex-Direction</div>
+                <div class="flex flex-col gap-2">
+                    <button class="control-btn btn-active" onclick="updateFlex('flexDirection', 'row', this)">row</button>
+                    <button class="control-btn" onclick="updateFlex('flexDirection', 'row-reverse', this)">row-reverse</button>
+                    <button class="control-btn" onclick="updateFlex('flexDirection', 'column', this)">column</button>
+                    <button class="control-btn" onclick="updateFlex('flexDirection', 'column-reverse', this)">column-reverse</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="group-title text-pink-600"><span>&equiv;</span> Justify-Content</div>
+                <div class="flex flex-col gap-2">
+                    <button class="control-btn btn-active" onclick="updateFlex('justifyContent', 'flex-start', this)">flex-start</button>
+                    <button class="control-btn" onclick="updateFlex('justifyContent', 'center', this)">center</button>
+                    <button class="control-btn" onclick="updateFlex('justifyContent', 'flex-end', this)">flex-end</button>
+                    <button class="control-btn" onclick="updateFlex('justifyContent', 'space-between', this)">space-between</button>
+                    <button class="control-btn" onclick="updateFlex('justifyContent', 'space-around', this)">space-around</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="group-title text-amber-600"><span>&boxplus;</span> Align-Items</div>
+                <div class="flex flex-col gap-2">
+                    <button class="control-btn" onclick="updateFlex('alignItems', 'flex-start', this)">flex-start</button>
+                    <button class="control-btn btn-active" onclick="updateFlex('alignItems', 'center', this)">center</button>
+                    <button class="control-btn" onclick="updateFlex('alignItems', 'flex-end', this)">flex-end</button>
+                    <button class="control-btn" onclick="updateFlex('alignItems', 'stretch', this)">stretch</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="group-title text-emerald-600"><span>&circlearrowright;</span> Flex-Wrap</div>
+                <div class="flex flex-col gap-2">
+                    <button class="control-btn btn-active" onclick="updateFlex('flexWrap', 'nowrap', this)">nowrap</button>
+                    <button class="control-btn" onclick="updateFlex('flexWrap', 'wrap', this)">wrap</button>
+                    <button class="control-btn" onclick="updateFlex('flexWrap', 'wrap-reverse', this)">wrap-reverse</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
